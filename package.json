@@ -1,0 +1,20 @@
+{
+  "name": "image-processing-api-project",
+  "version": "1.0.0",
+  "description": "Full Stack JavaScript Developer Nanodegree - Project 1",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/trunglive/image-processing-api-project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/trunglive/image-processing-api-project/issues"
+  },
+  "homepage": "https://github.com/trunglive/image-processing-api-project#readme"
+}
