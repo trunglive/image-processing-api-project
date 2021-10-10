@@ -1,6 +1,6 @@
+import fs from "fs";
 import supertest from "supertest";
 import app from "../index";
-import fs from "fs";
 
 const request = supertest(app);
 
