@@ -15,7 +15,7 @@ images.get("/", async (req, res) => {
 
   try {
     if (!imageCacheExists) {
-      console.log("resize and serve image");
+      console.log("resize and serve image...");
 
       const imageBuffer = await fs.readFileSync(`images/${filename}.jpg`);
       if (!imageBuffer) throw new Error();
@@ -36,7 +36,7 @@ images.get("/", async (req, res) => {
         }
       );
     } else {
-      console.log("serve image from cache");
+      console.log("serve image from cache...");
 
       const imageBuffer = await fs.readFileSync(
         `images/resize/${filename}-resize.jpg`
@@ -46,11 +46,11 @@ images.get("/", async (req, res) => {
       res.set("Content-Type", "image/jpeg");
       res.send(imageBuffer);
     }
-  } catch (e) {
-    console.log(`Error processing file name ${filename}`);
+  } catch (err) {
+    console.log(`error processing file name ${filename}`);
 
     res.send({
-      error: `Error processing file name ${filename}`,
+      error: `error processing file name ${filename}`,
     });
   }
 });
