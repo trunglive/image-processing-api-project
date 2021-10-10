@@ -24,17 +24,16 @@ images.get("/", async (req, res) => {
         .resize({ width, height })
         .jpeg();
 
+      await resizedImage
+        .clone()
+        .toFile(`images/resize/${filename}-resize.jpg`, (err, info) => {
+          console.log({ err, info });
+        });
+
       const resizedImageBuffer = await resizedImage.toBuffer();
 
       res.set("Content-Type", "image/jpeg");
       res.send(resizedImageBuffer);
-
-      await resizedImage.toFile(
-        `images/resize/${filename}-resize.jpg`,
-        (err, info) => {
-          console.log({ err, info });
-        }
-      );
     } else {
       console.log("serve image from cache...");
 
