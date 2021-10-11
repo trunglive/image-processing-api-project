@@ -1,14 +1,14 @@
-import express from 'express'
+import express, { Application } from 'express'
 import routes from './routes'
 import images from './routes/api/images'
 
-const app = express()
+const app: Application = express()
 const port = 3000
 
 app.use('/api', routes)
 app.use('/api/images', images)
 
-app.listen(port, () => {
+app.listen(port, (): void => {
   console.log(`server started at http://localhost:${port}`)
 })
 
