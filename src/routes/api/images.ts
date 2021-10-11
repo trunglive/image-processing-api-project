@@ -1,10 +1,10 @@
-import express from 'express'
+import express, { Request, Response } from 'express'
 import sharp from 'sharp'
 import fs from 'fs'
 
 const images = express.Router()
 
-images.get('/', async (req, res) => {
+images.get('/', async (req: Request, res: Response) => {
   const { filename } = req.query
   const width = Number(req.query.width)
   const height = Number(req.query.height)
