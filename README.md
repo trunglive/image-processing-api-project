@@ -49,7 +49,7 @@ List of available routes:
 
 `GET /` - homepage\
 `GET /api/` - main api route\
-`GET /api/images?filename=:filename&width=:width&height=:height` - resize image\
+`GET /api/images?filename=:filename&width=:width&height=:height` - resize image
 
 #### Contributor
 
