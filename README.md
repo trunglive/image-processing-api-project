@@ -9,15 +9,15 @@
 * [Typescript](https://github.com/microsoft/TypeScript)
 * [Jasmine](https://github.com/jasmine/jasmine)
 
-#### Quick Start
+#### Commands
 
-**Clone the project**
+Clone the project:
 
 ```shell
 $ git clone git@github.com:trunglive/image-processing-api-project.git
 ```
 
-**Run the app**
+Running locally:
 
 ```shell
 $ cd image-processing-api-project
@@ -25,6 +25,31 @@ $ git switch develop
 $ npm install
 $ npm start
 ```
+
+Testing:
+
+```shell
+#  compile to JS code & run test
+npm run test
+```
+
+Linting:
+
+```shell
+# run ESLint
+npm run lint
+
+# run Prettier
+yarn run prettier
+```
+
+#### API Endpoints
+
+List of available routes:
+
+`GET /` - homepage\
+`GET /api/` - main api route\
+`GET /api/images?filename=:filename&width=:width&height=:height` - resize image\
 
 #### Contributor
 
