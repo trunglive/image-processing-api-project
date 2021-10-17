@@ -11,7 +11,28 @@ images.get(
     const width = Number(req.query.width)
     const height = Number(req.query.height)
 
-    const imageCacheExists = fs.existsSync(`images/resize/${filename}-resize.jpg`)
+    if (!filename) {
+      console.log('filename can not be empty')
+
+      res.send({
+        error: 'filename can not be empty',
+      })
+
+      return
+    }
+
+    if (!Boolean(width) || !Boolean(height)) {
+      console.log('invalid input of width and height')
+
+      res.send({
+        error: 'invalid input of width and height',
+      })
+
+      return
+    }
+
+    const resizedImagePath = `images/resize/${filename}-${width}x${height}.jpg`
+    const imageCacheExists = fs.existsSync(resizedImagePath)
 
     try {
       if (!imageCacheExists) {
@@ -22,7 +43,7 @@ images.get(
 
         const resizedImage = resizeImage({ imageBuffer, width, height })
 
-        resizedImage.clone().toFile(`images/resize/${filename}-resize.jpg`, (err, info) => {
+        resizedImage.clone().toFile(resizedImagePath, (err, info) => {
           console.log({ err, info })
         })
 
@@ -33,7 +54,7 @@ images.get(
       } else {
         console.log('serve image from cache...')
 
-        const imageBuffer = fs.readFileSync(`images/resize/${filename}-resize.jpg`)
+        const imageBuffer = fs.readFileSync(resizedImagePath)
         if (!imageBuffer) throw new Error()
 
         res.set('Content-Type', 'image/jpeg')
