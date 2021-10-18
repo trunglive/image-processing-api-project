@@ -29,6 +29,10 @@ images.get('/', async (req: Request, res: Response): Promise<void> => {
     return
   }
 
+  const resizeFolderExists = fs.existsSync('images/resize')
+  if (!resizeFolderExists) {
+    fs.mkdirSync('images/resize')
+  }
   const resizedImagePath = `images/resize/${filename}-${width}x${height}.jpg`
   const imageCacheExists = fs.existsSync(resizedImagePath)
 
